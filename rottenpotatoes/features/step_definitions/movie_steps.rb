@@ -20,7 +20,7 @@ Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   #  ensure that that e1 occurs before e2.
   #  page.body is the entire content of the page as a string.
   #fail "Unimplemented"
-  page.body.index(e1).should be < page.body.index(e2)
+  expect(page.body.index(e1) < page.body.index(e2))
 end
 
 # Make it easier to express checking or unchecking several boxes at once
@@ -43,5 +43,5 @@ end
 Then /I should see all the movies/ do
   # Make sure that all the movies in the app are visible in the table
   #fail "Unimplemented"
-  page.should have_selector('tbody/tr', count: Movie.count)
+  expect(page).to have_selector(page.body, count: Movie.count)
 end
